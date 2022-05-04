@@ -21,8 +21,10 @@ const Nav = (props) => {
 					/>
 				</Link>
 				<ul className={styles.menus}>
-					{menus.map((menu) => (
-						<li className={styles.menu}>{menu}</li>
+					{menus.map((menu, index) => (
+						<li className={styles.menu} key={index}>
+							{menu}
+						</li>
 					))}
 				</ul>
 			</div>
