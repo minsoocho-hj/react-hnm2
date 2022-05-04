@@ -1,6 +1,7 @@
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './nav.module.css';
 
 const Nav = (props) => {
@@ -12,11 +13,13 @@ const Nav = (props) => {
 				<p>Login</p>
 			</div>
 			<div className={styles.navbar}>
-				<img
-					src='https://logos-world.net/wp-content/uploads/2020/04/HM-Logo.png'
-					alt=''
-					className={styles.logo}
-				/>
+				<Link to='/'>
+					<img
+						src='https://logos-world.net/wp-content/uploads/2020/04/HM-Logo.png'
+						alt=''
+						className={styles.logo}
+					/>
+				</Link>
 				<ul className={styles.menus}>
 					{menus.map((menu) => (
 						<li className={styles.menu}>{menu}</li>
