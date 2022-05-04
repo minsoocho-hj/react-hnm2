@@ -1,0 +1,22 @@
+.img {
+	width: 70%;
+}
+
+.btn {
+	background-color: black;
+	outline: none;
+	border: none;
+	color: #ffff;
+	width: 100%;
+}
+
+.choice {
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: green;
+}
+
+.new {
+	font-size: 0.8rem;
+	font-weight: 600;
+}
