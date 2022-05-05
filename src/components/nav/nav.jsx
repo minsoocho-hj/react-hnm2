@@ -1,14 +1,33 @@
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { useRef } from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import {
+	Link,
+	useNavigate,
+	useParams,
+	useSearchParams,
+} from 'react-router-dom';
 import styles from './nav.module.css';
 
 const Nav = ({ authenticate, setAuthenticate }) => {
 	const menus = ['Women', 'Men', 'Kids', 'Sale', 'H&M Home', 'Sustainable'];
 	const navigate = useNavigate();
 
+	const inputRef = useRef();
+	let [searchParams, setSearchParams] = useSearchParams();
+
+	const onSearch = (e) => {
+		if (e.code === 'Enter') {
+			e.preventDefault();
+			let params = inputRef.current.value;
+			navigate(`/?q=${params}`);
+		} else {
+			return;
+		}
+	};
 	return (
 		<Container>
 			<Row>
@@ -49,6 +68,16 @@ const Nav = ({ authenticate, setAuthenticate }) => {
 							</li>
 						))}
 					</ul>
+					<div className={styles.search}>
+						<FontAwesomeIcon icon={faSearch} />
+						<input
+							type='text'
+							className={styles.input}
+							placeholder='Search '
+							onKeyPress={(e) => onSearch(e)}
+							ref={inputRef}
+						/>
+					</div>
 				</Col>
 			</Row>
 		</Container>

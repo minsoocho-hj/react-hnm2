@@ -2,15 +2,17 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useSearchParams } from 'react-router-dom';
 import Card from '../card/card';
 import styles from './all.module.css';
 
 const All = () => {
 	const [products, setProducts] = useState([]);
+	const [query, setQuery] = useSearchParams();
 
 	const getProducts = async () => {
-		let url =
-			'https://my-json-server.typicode.com/minsoocho-hj/react-hnm2/products';
+		const params = query.get('q') || '';
+		let url = `https://my-json-server.typicode.com/minsoocho-hj/react-hnm2/products/?q=${params}`;
 		let res = await fetch(url);
 		let data = await res.json();
 		setProducts(data);
@@ -19,7 +21,7 @@ const All = () => {
 
 	useEffect(() => {
 		getProducts();
-	}, []);
+	}, [query]);
 
 	return (
 		<Container>
