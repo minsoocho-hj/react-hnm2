@@ -12,7 +12,6 @@ const Detail = (props) => {
 		let url = `https://my-json-server.typicode.com/minsoocho-hj/react-hnm2/products/${id}`;
 		let res = await fetch(url);
 		let data = await res.json();
-		console.log(data);
 		setProduct(data);
 	};
 

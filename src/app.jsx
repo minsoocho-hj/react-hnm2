@@ -9,7 +9,6 @@ import { useDispatch } from 'react-redux';
 
 function App() {
 	const [authenticate, setAuthenticate] = useState(false);
-	const dispatch = useDispatch();
 	return (
 		<>
 			<Nav authenticate={authenticate} setAuthenticate={setAuthenticate} />

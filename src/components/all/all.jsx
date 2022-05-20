@@ -6,16 +6,16 @@ import { useSearchParams } from 'react-router-dom';
 import Card from '../card/card';
 import styles from './all.module.css';
 
-const All = () => {
-	const [products, setProducts] = useState([]);
-	const [query, setQuery] = useSearchParams();
+import { productAction } from '../../redux/actions/productAction';
+import { useDispatch, useSelector } from 'react-redux';
 
-	const getProducts = async () => {
+const All = () => {
+	const productList = useSelector((state) => state.product.productList);
+	const [query, setQuery] = useSearchParams();
+	const dispatch = useDispatch();
+	const getProducts = () => {
 		const params = query.get('q') || '';
-		let url = `https://my-json-server.typicode.com/minsoocho-hj/react-hnm2/products/?q=${params}`;
-		let res = await fetch(url);
-		let data = await res.json();
-		setProducts(data);
+		dispatch(productAction.getProducts(params));
 	};
 
 	useEffect(() => {
@@ -25,7 +25,7 @@ const All = () => {
 	return (
 		<Container>
 			<Row>
-				{products.map((product) => (
+				{productList.map((product) => (
 					<Col lg={3} md={6} sm={12} key={product.id}>
 						<Card product={product} />
 					</Col>
