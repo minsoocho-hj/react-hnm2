@@ -16,7 +16,6 @@ const All = () => {
 		let res = await fetch(url);
 		let data = await res.json();
 		setProducts(data);
-		console.log(data);
 	};
 
 	useEffect(() => {
