@@ -38,6 +38,7 @@ const Login = ({ setAuthenticate }) => {
 							<Form.Control
 								type='password'
 								placeholder='Password'
+								autoComplete='Password'
 								onClick={(e) => setPwd(e.target.value)}
 							/>
 						</Form.Group>
